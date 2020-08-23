@@ -16,15 +16,17 @@ class PredictionTile extends StatelessWidget {
         ),
       ),
       onTap: () {
-        print(prediction);
+        print(prediction.placeId);
       },
     );
   }
 
   List<TextSpan> _buildPredictionText(BuildContext context) {
     final result = <TextSpan>[];
-    const textStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.w300);
-    const boldTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
+    const textStyle = TextStyle(
+        fontSize: 16, fontWeight: FontWeight.w300, color: Colors.black);
+    const boldTextStyle = TextStyle(
+        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black);
 
     if (prediction.matchedSubstrings.isNotEmpty) {
       final matchedSubString = prediction.matchedSubstrings[0];

@@ -1,15 +1,14 @@
 import 'package:bex_app/core/failures/network_failures.dart';
 import 'package:bex_app/domain/map/i_map_facade.dart';
 import 'package:dartz/dartz.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kt_dart/collection.dart';
 
-import 'package:bex_app/domain/map/location_entity.dart';
 import "package:google_maps_webservice/places.dart";
 
 class GoogleMapsFacade implements IMapFacade {
   @override
-  Future<Either<NetworkFailure, KtList<LocationEntity>>> searchLocations(
+  Future<Either<NetworkFailure, KtList<Prediction>>> searchLocations(
     String searchString,
   ) async {
     final places = GoogleMapsPlaces(
@@ -17,16 +16,9 @@ class GoogleMapsFacade implements IMapFacade {
     );
 
     try {
-      final response = await places.searchByText(searchString);
+      final response = await places.autocomplete(searchString);
 
-      final mappedToEntityList = response.results.map((l) {
-        final lat = l.geometry.location.lat;
-        final long = l.geometry.location.lng;
-        final addr = l.formattedAddress;
-        return LocationEntity(name: addr, coords: LatLng(lat, long));
-      });
-
-      return right(mappedToEntityList.toImmutableList());
+      return right(response.predictions.toImmutableList());
     } catch (_) {
       return left(NetworkFailure());
     }

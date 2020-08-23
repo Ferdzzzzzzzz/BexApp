@@ -1,8 +1,8 @@
 import 'package:bex_app/application/map/location_search/cubit.dart';
+import 'package:bex_app/core/failures/network_failures.dart';
 import 'package:bex_app/domain/map/i_map_facade.dart';
-import 'package:bex_app/domain/map/location_entity.dart';
 import 'package:bloc/bloc.dart';
-import 'package:kt_dart/kt.dart';
+import 'package:dartz/dartz.dart';
 import './location_search_state.dart';
 
 class LocationSearchCubit extends Cubit<LocationSearchState> {
@@ -11,25 +11,32 @@ class LocationSearchCubit extends Cubit<LocationSearchState> {
   LocationSearchCubit(this.mapFacade) : super(LocationSearchState.initial());
 
   Future<void> searchLocations(String locationSearchString) async {
-    emit(LocationSearchState.searching(
-      locationList: KtList.from(<LocationEntity>[]),
+    emit(state.copyWith(
+      searching: true,
     ));
 
     if (locationSearchString.isEmpty) {
-      return emit(LocationSearchState.notSearching(
-        locationList: KtList.empty(),
+      return emit(LocationSearchState(
+        locationList: none(),
+        searching: false,
       ));
     }
 
     final searchResult = await mapFacade.searchLocations(locationSearchString);
 
     searchResult.fold(
-      (f) => emit(LocationSearchState.searching(
-        locationList: KtList.from(<LocationEntity>[]),
-      )),
-      (locationList) => emit(LocationSearchState.searching(
-        locationList: locationList,
-      )),
+      (f) {
+        emit(LocationSearchState(
+          locationList: some(left(NetworkFailure())),
+          searching: false,
+        ));
+      },
+      (predictions) {
+        emit(LocationSearchState(
+          locationList: some(right(predictions)),
+          searching: false,
+        ));
+      },
     );
   }
 }
