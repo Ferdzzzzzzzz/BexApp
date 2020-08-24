@@ -243,7 +243,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.1"
+    version: "0.13.2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -262,7 +262,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.5"
+    version: "0.11.6"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -325,7 +325,7 @@ packages:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.3"
+    version: "1.4.4"
   hive_flutter:
     dependency: "direct main"
     description:

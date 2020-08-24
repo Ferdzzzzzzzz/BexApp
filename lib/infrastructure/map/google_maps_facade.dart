@@ -23,4 +23,21 @@ class GoogleMapsFacade implements IMapFacade {
       return left(NetworkFailure());
     }
   }
+
+  @override
+  Future<Either<NetworkFailure, PlacesDetailsResponse>> getDetailsByPlaceId(
+    String placeId,
+  ) async {
+    final places = GoogleMapsPlaces(
+      apiKey: "AIzaSyDhKLN-TZqzyeW_5yCtizJ8DcH8_Kceb2g",
+    );
+
+    try {
+      final response = await places.getDetailsByPlaceId(placeId);
+
+      return right(response);
+    } catch (_) {
+      return left(NetworkFailure());
+    }
+  }
 }

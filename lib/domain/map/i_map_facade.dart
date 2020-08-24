@@ -7,4 +7,8 @@ abstract class IMapFacade {
   Future<Either<NetworkFailure, KtList<Prediction>>> searchLocations(
     String searchString,
   );
+
+  Future<Either<NetworkFailure, PlacesDetailsResponse>> getDetailsByPlaceId(
+    String placeId,
+  );
 }

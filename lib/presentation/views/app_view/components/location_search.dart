@@ -7,12 +7,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class LocationSearchBar extends HookWidget {
   final _debouncer = Debouncer(milliseconds: 500);
+  final FocusNode focusNode;
+  final TextEditingController textController;
+
+  LocationSearchBar(this.focusNode, this.textController);
 
   @override
   Widget build(BuildContext context) {
     final maxH = context.mediaQuerySize.height;
     final maxW = context.mediaQuerySize.width;
-    final textController = useTextEditingController();
 
     return Padding(
       padding: EdgeInsets.only(top: maxH * 0.08),
@@ -22,13 +25,16 @@ class LocationSearchBar extends HookWidget {
           builder: (context, state) {
             return Card(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
               elevation: 2,
               child: Container(
                 width: maxW * 0.8,
                 height: maxH * 0.05,
                 child: Center(
                   child: TextField(
+                    focusNode: focusNode,
+                    onTap: () => focusNode.requestFocus(),
                     autocorrect: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.search),

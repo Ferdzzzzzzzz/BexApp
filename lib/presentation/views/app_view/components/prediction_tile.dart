@@ -3,8 +3,12 @@ import 'package:google_maps_webservice/places.dart';
 
 class PredictionTile extends StatelessWidget {
   final Prediction prediction;
+  final void Function(String placeId) onTap;
 
-  const PredictionTile({@required this.prediction});
+  const PredictionTile({
+    @required this.prediction,
+    @required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +19,7 @@ class PredictionTile extends StatelessWidget {
           children: _buildPredictionText(context),
         ),
       ),
-      onTap: () {
-        print(prediction.placeId);
-      },
+      onTap: () => onTap(prediction.placeId),
     );
   }
 
