@@ -8,6 +8,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomBar(),
+      resizeToAvoidBottomPadding: false,
       body: Map(),
     );
   }
