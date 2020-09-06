@@ -4,6 +4,7 @@ import 'package:bex_app/core/hooks/focus_node_value_listener.dart';
 import 'package:bex_app/domain/map/i_map_facade.dart';
 import 'package:bex_app/presentation/views/app_view/components/location_search.dart';
 import 'package:bex_app/presentation/views/app_view/components/location_search_result_picker.dart';
+import 'package:bex_app/presentation/views/app_view/components/main_menu.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class Map extends HookWidget {
   final _controller = Completer<GoogleMapController>();
 
   final _kGooglePlex = const CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(-33.9249, 18.4241),
     zoom: zoom,
   );
 
@@ -66,6 +67,7 @@ class Map extends HookWidget {
               );
             }),
           LocationSearchBar(focusNode, textController),
+          MainMenu(),
         ],
       ),
     );
@@ -92,7 +94,6 @@ class Map extends HookWidget {
       (placeDetails) {
         final lat = placeDetails.result.geometry.location.lat;
         final lng = placeDetails.result.geometry.location.lng;
-
         final updatedCameraPos = CameraPosition(
           target: LatLng(lat, lng),
           zoom: zoom,

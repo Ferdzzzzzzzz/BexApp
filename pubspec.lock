@@ -229,7 +229,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1"
+    version: "6.0.5"
   flutter_hex_color:
     dependency: "direct main"
     description:
@@ -297,7 +297,7 @@ packages:
       name: google_maps_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.30"
+    version: "0.5.31"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
