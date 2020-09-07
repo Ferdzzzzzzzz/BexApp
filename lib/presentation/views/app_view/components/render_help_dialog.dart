@@ -1,5 +1,5 @@
 import 'package:bex_app/application/bootstrap/cubit.dart';
-import 'package:bex_app/core/constants.dart';
+import 'package:bex_app/gen/assets.gen.dart';
 import 'package:bex_app/presentation/views/app_view/components/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,8 +53,7 @@ void renderHelpDialog(
                       width: maxW * 0.65,
                       child: Row(
                         children: [
-                          Image.asset(
-                            locationOrange,
+                          Assets.icons.locationOrange.image(
                             height: maxH * 0.1,
                           ),
                           Text(
@@ -71,8 +70,7 @@ void renderHelpDialog(
                       width: maxW * 0.65,
                       child: Row(
                         children: [
-                          Image.asset(
-                            locationBlue,
+                          Assets.icons.locationBlue.image(
                             height: maxH * 0.1,
                           ),
                           Text(

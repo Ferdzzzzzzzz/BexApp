@@ -1,5 +1,6 @@
 // import 'package:bex_app/application/bootstrap/cubit.dart';
 import 'package:bex_app/application/map/about/about_cubit.dart';
+import 'package:bex_app/presentation/views/about_view/about_view.dart';
 import 'package:bex_app/presentation/views/app_view/components/bottom_bar.dart';
 import 'package:bex_app/presentation/views/app_view/components/map.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +22,9 @@ class AppView extends StatelessWidget {
           resizeToAvoidBottomPadding: false,
           body: PageView(
             controller: controller,
-            physics: state == CurrentPage.mapPage
-                ? const NeverScrollableScrollPhysics()
-                : const PageScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
-              const Center(
-                child: Text('some menu'),
-              ),
+              AboutView(),
               Map(),
             ],
           ),
@@ -41,12 +38,10 @@ class AppView extends StatelessWidget {
     CurrentPage state,
     PageController controller,
   ) {
-    if (state == CurrentPage.aboutPage) {
-      controller.animateToPage(
-        0,
-        duration: const Duration(milliseconds: 100),
-        curve: ,
-      );
-    }
+    controller.animateToPage(
+      state == CurrentPage.aboutPage ? 0 : 1,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.ease,
+    );
   }
 }

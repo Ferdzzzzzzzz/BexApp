@@ -1,12 +1,19 @@
 {
     "files.exclude": {
-        "**/.git": false,
-        "**/.svn": false,
-        "**/.hg": false,
-        "**/CVS": false,
+        "**/.git": true,
+        "**/.dart_tool": true,
+        "**/pubspec.lock": true,
+        "**/bex_app.iml": true,
+        "**/.gitignore": true,
+        "**/.metadata": true,
+        "**/.flutter-plugins": true,
+        "**/.flutter-plugins-dependencies": true,
+        "**/.packages": true,
+        "**/.idea": true,
         "**/.DS_Store": false,
         "**/*.freezed.dart": true,
-        "**/*.g.dart": true
+        "**/*.g.dart": true,
+        "**/lib/gen": true
     },
     "explorerExclude.backup": null
 }

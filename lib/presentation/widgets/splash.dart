@@ -1,4 +1,5 @@
-import 'package:bex_app/core/constants.dart';
+import 'package:bex_app/gen/assets.gen.dart';
+import 'package:bex_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 
@@ -9,7 +10,7 @@ class Splash extends StatelessWidget {
     final maxH = context.mediaQuerySize.height;
 
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: ColorName.bgColor,
       body: Align(
         child: Container(
           width: maxW * 0.5,
@@ -17,14 +18,8 @@ class Splash extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                logoAssetPath,
-                fit: BoxFit.contain,
-              ),
-              Image.asset(
-                bexAssetPath,
-                fit: BoxFit.contain,
-              ),
+              Assets.images.logo.image(fit: BoxFit.contain),
+              Assets.images.bex.image(fit: BoxFit.contain),
               SizedBox(height: maxH * 0.1)
             ],
           ),

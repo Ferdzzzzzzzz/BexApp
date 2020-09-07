@@ -1,4 +1,4 @@
-import 'package:bex_app/core/constants.dart';
+import 'package:bex_app/gen/assets.gen.dart';
 import 'package:bex_app/presentation/views/settings_select/widgets/settings_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,9 +64,9 @@ class SettingsSelectView extends StatelessWidget {
     return Container(
       width: maxW,
       height: maxH,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(backgroundImagePath),
+          image: AssetImage(Assets.images.background.path),
           fit: BoxFit.fill,
         ),
       ),

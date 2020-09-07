@@ -1,5 +1,6 @@
+import 'package:bex_app/application/map/about/about_cubit.dart';
 import 'package:bex_app/application/map/main_menu/main_menu_cubit.dart';
-import 'package:bex_app/core/constants.dart';
+import 'package:bex_app/gen/assets.gen.dart';
 import 'package:bex_app/presentation/views/app_view/components/render_help_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
@@ -69,8 +70,8 @@ class BottomBar extends HookWidget {
           selectedMenuItem.value = SelectedItem.home;
         },
         child: homeSelected
-            ? Image.asset(navbarHomeIcon)
-            : Image.asset(navbarHomeOutlineIcon),
+            ? Assets.icons.navbarHome.image()
+            : Assets.icons.navbarHomeOutline.image(),
       ),
     );
   }
@@ -81,6 +82,7 @@ class BottomBar extends HookWidget {
     double iconHeight,
   ) {
     final mainMenuCubit = context.bloc<MainMenuCubit>();
+    final aboutCubit = context.bloc<AboutCubit>();
     final mapSelected = selectedMenuItem.value == SelectedItem.map;
     return SizedBox(
       height: iconHeight,
@@ -91,11 +93,12 @@ class BottomBar extends HookWidget {
             return;
           }
           mainMenuCubit.hideMenu();
+          aboutCubit.switchToMap();
           selectedMenuItem.value = SelectedItem.map;
         },
         child: mapSelected
-            ? Image.asset(navbarLocationIcon)
-            : Image.asset(navbarLocationOutlineIcon),
+            ? Assets.icons.navbarLocation.image()
+            : Assets.icons.navbarLocationOutline.image(),
       ),
     );
   }
@@ -119,8 +122,8 @@ class BottomBar extends HookWidget {
           renderHelpDialog(context, selectedMenuItem);
         },
         child: helpSelected
-            ? Image.asset(navbarHelpIcon)
-            : Image.asset(navbarHelpOutlineIcon),
+            ? Assets.icons.navbarHelp.image()
+            : Assets.icons.navbarHelpOutline.image(),
       ),
     );
   }
