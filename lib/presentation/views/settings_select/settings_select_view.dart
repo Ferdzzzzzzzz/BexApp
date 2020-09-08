@@ -30,16 +30,20 @@ class SettingsSelectView extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: maxH * 0.22),
-          Text('do you have',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w300,
-                fontSize: 30,
-              )),
-          Text('Type 1 Diabetes?',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w300,
-                fontSize: 30,
-              )),
+          Text(
+            'do you have',
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              fontSize: 30,
+            ),
+          ),
+          Text(
+            'Type 1 Diabetes?',
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              fontSize: 30,
+            ),
+          ),
           SizedBox(height: maxH * 0.06),
           _renderButtons(context, maxW),
         ],

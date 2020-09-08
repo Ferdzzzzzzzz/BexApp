@@ -21,10 +21,6 @@ class BottomBar extends HookWidget {
     final selectedMenuItem = useState(SelectedItem.map);
     final iconHeight = maxH * 0.05;
 
-    // final mapSelected = selectedMenuItem.value == SelectedItem.map;
-    // final instructionsSelected =
-    //     selectedMenuItem.value == SelectedItem.instructions;
-
     return BottomAppBar(
       elevation: 100,
       child: Container(
@@ -110,21 +106,27 @@ class BottomBar extends HookWidget {
   ) {
     final helpSelected = selectedMenuItem.value == SelectedItem.help;
 
-    return SizedBox(
-      height: iconHeight * 1.2,
-      child: GestureDetector(
-        onTap: () {
-          if (helpSelected) {
-            selectedMenuItem.value = SelectedItem.map;
-            return;
-          }
-          selectedMenuItem.value = SelectedItem.help;
-          renderHelpDialog(context, selectedMenuItem);
-        },
-        child: helpSelected
-            ? Assets.icons.navbarHelp.image()
-            : Assets.icons.navbarHelpOutline.image(),
-      ),
+    return BlocBuilder<AboutCubit, CurrentPage>(
+      builder: (context, state) {
+        return SizedBox(
+          height: iconHeight * 1.2,
+          child: state == CurrentPage.aboutPage
+              ? Assets.icons.navbarHelpGreyed.image()
+              : GestureDetector(
+                  onTap: () {
+                    if (helpSelected) {
+                      selectedMenuItem.value = SelectedItem.map;
+                      return;
+                    }
+                    selectedMenuItem.value = SelectedItem.help;
+                    renderHelpDialog(context, selectedMenuItem);
+                  },
+                  child: helpSelected
+                      ? Assets.icons.navbarHelp.image()
+                      : Assets.icons.navbarHelpOutline.image(),
+                ),
+        );
+      },
     );
   }
 }
