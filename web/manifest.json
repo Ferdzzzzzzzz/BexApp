@@ -1,6 +1,6 @@
 {
-    "name": "bex_app",
-    "short_name": "bex_app",
+    "name": "bex",
+    "short_name": "bex",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

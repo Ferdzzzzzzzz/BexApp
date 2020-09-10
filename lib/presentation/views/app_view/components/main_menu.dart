@@ -1,11 +1,11 @@
-import 'package:bex_app/application/bootstrap/cubit.dart';
-import 'package:bex_app/application/map/about/about_cubit.dart';
-import 'package:bex_app/application/map/main_menu/main_menu_cubit.dart';
-import 'package:bex_app/core/hooks/animation_hooks.dart';
+import 'package:Bex/application/bootstrap/cubit.dart';
+import 'package:Bex/application/map/about/about_cubit.dart';
+import 'package:Bex/application/map/main_menu/main_menu_cubit.dart';
+import 'package:Bex/core/hooks/animation_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:bex_app/core/extensions/context_extensions.dart';
+import 'package:Bex/core/extensions/context_extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const _offsetHiddenMultiplier = 0.26;

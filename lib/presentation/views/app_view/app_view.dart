@@ -1,8 +1,7 @@
-// import 'package:bex_app/application/bootstrap/cubit.dart';
-import 'package:bex_app/application/map/about/about_cubit.dart';
-import 'package:bex_app/presentation/views/about_view/about_view.dart';
-import 'package:bex_app/presentation/views/app_view/components/bottom_bar.dart';
-import 'package:bex_app/presentation/views/app_view/components/map.dart';
+import 'package:Bex/application/map/about/about_cubit.dart';
+import 'package:Bex/presentation/views/about_view/about_view.dart';
+import 'package:Bex/presentation/views/app_view/components/bottom_bar.dart';
+import 'package:Bex/presentation/views/app_view/components/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,7 +1,8 @@
-import 'package:bex_app/application/map/about/about_cubit.dart';
-import 'package:bex_app/application/map/main_menu/main_menu_cubit.dart';
-import 'package:bex_app/gen/assets.gen.dart';
-import 'package:bex_app/presentation/views/app_view/components/render_help_dialog.dart';
+import 'package:Bex/application/map/about/about_cubit.dart';
+import 'package:Bex/application/map/main_menu/main_menu_cubit.dart';
+import 'package:Bex/core/constants.dart';
+import 'package:Bex/gen/assets.gen.dart';
+import 'package:Bex/presentation/views/app_view/components/render_help_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,26 +22,30 @@ class BottomBar extends HookWidget {
     final selectedMenuItem = useState(SelectedItem.map);
     final iconHeight = maxH * 0.05;
 
-    return BottomAppBar(
-      elevation: 100,
-      child: Container(
-        padding: EdgeInsets.only(
-          left: maxW * 0.08,
-          right: maxW * 0.08,
-          top: maxH * 0.005,
-        ),
-        height: maxH * 0.06,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _renderHomeBtn(context, selectedMenuItem, iconHeight),
-            _renderMapBtn(context, selectedMenuItem, iconHeight),
-            _renderHelpBtn(
-              context,
-              selectedMenuItem,
-              iconHeight,
-            ),
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: bottomBarMaterialBoxShadow,
+      ),
+      child: BottomAppBar(
+        child: Container(
+          padding: EdgeInsets.only(
+            left: maxW * 0.08,
+            right: maxW * 0.08,
+            top: maxH * 0.005,
+          ),
+          height: maxH * 0.08,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _renderHomeBtn(context, selectedMenuItem, iconHeight),
+              _renderMapBtn(context, selectedMenuItem, iconHeight),
+              _renderHelpBtn(
+                context,
+                selectedMenuItem,
+                iconHeight,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -108,9 +113,11 @@ class BottomBar extends HookWidget {
 
     return BlocBuilder<AboutCubit, CurrentPage>(
       builder: (context, state) {
+        final greyedOut = state == CurrentPage.aboutPage ||
+            selectedMenuItem.value == SelectedItem.home;
         return SizedBox(
           height: iconHeight * 1.2,
-          child: state == CurrentPage.aboutPage
+          child: greyedOut
               ? Assets.icons.navbarHelpGreyed.image()
               : GestureDetector(
                   onTap: () {

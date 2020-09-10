@@ -5,6 +5,12 @@
 
 import 'package:flutter/widgets.dart';
 
+class $ConfigGen {
+  const $ConfigGen();
+
+  String get appConfig => 'config/app_config.json';
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -44,6 +50,7 @@ class $AssetsIconsGen {
 class Assets {
   Assets._();
 
+  static const $ConfigGen config = $ConfigGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
 }

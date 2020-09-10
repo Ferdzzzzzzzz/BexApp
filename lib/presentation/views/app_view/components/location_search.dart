@@ -1,5 +1,6 @@
-import 'package:bex_app/application/map/location_search/cubit.dart';
-import 'package:bex_app/core/utils/debouncer.dart';
+import 'package:Bex/application/map/location_search/cubit.dart';
+import 'package:Bex/core/constants.dart';
+import 'package:Bex/core/utils/debouncer.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,11 +24,12 @@ class LocationSearchBar extends HookWidget {
         alignment: Alignment.topCenter,
         child: BlocBuilder<LocationSearchCubit, LocationSearchState>(
           builder: (context, state) {
-            return Card(
-              shape: RoundedRectangleBorder(
+            return Container(
+              decoration: BoxDecoration(
+                boxShadow: materialBoxShadow,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              elevation: 2,
               child: Container(
                 width: maxW * 0.8,
                 height: maxH * 0.05,

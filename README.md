@@ -1,4 +1,4 @@
-# bex_app
+# Bex
 
 A new Flutter project.
 

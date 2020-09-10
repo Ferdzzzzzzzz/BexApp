@@ -1,4 +1,4 @@
-package com.example.bex_app
+package com.ferdzz.bex
 
 import io.flutter.embedding.android.FlutterActivity
 

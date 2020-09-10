@@ -1,4 +1,4 @@
-import 'package:bex_app/application/bootstrap/cubit.dart';
+import 'package:Bex/application/bootstrap/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

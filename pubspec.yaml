@@ -1,4 +1,4 @@
-name: bex_app
+name: Bex
 description: Bex App is a social platform for people who suffer from diabetes.
 version: 1.0.0+1
 
@@ -23,6 +23,7 @@ dependencies:
   hive_flutter: 0.3.1
   google_maps_webservice: 0.0.18
   auto_size_text: ^2.1.0
+  hooks_riverpod: ^0.9.2
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,14 @@ dev_dependencies:
   freezed: 0.11.6
   build_runner: 1.10.1
   lint: 1.2.0
+  flutter_launcher_icons: 0.7.5
+  change_app_package_name: 0.1.2
+  json_serializable: ^3.4.1
+
+flutter_icons:
+  image_path: "assets/images/LOGO.png"
+  android: true
+  ios: true
 
 flutter_gen:
   colors:
@@ -39,6 +48,7 @@ flutter_gen:
 flutter:
   uses-material-design: true
   assets:
+    - config/
     - assets/images/LOGO.png
     - assets/images/BEX.png
     - assets/images/BACKGROUND.png
@@ -53,4 +63,3 @@ flutter:
     - assets/icons/navbar_help.png
     - assets/icons/navbar_home.png
     - assets/icons/navbar_home_outline.png
-

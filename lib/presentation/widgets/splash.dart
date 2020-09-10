@@ -1,5 +1,5 @@
-import 'package:bex_app/gen/assets.gen.dart';
-import 'package:bex_app/gen/colors.gen.dart';
+import 'package:Bex/gen/assets.gen.dart';
+import 'package:Bex/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 

@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:bex_app/application/map/location_search/cubit.dart';
-import 'package:bex_app/core/hooks/focus_node_value_listener.dart';
-import 'package:bex_app/domain/map/i_map_facade.dart';
-import 'package:bex_app/presentation/views/app_view/components/location_search.dart';
-import 'package:bex_app/presentation/views/app_view/components/location_search_result_picker.dart';
-import 'package:bex_app/presentation/views/app_view/components/main_menu.dart';
+import 'package:Bex/application/map/location_search/cubit.dart';
+import 'package:Bex/core/hooks/focus_node_value_listener.dart';
+import 'package:Bex/domain/map/i_map_facade.dart';
+import 'package:Bex/presentation/views/app_view/components/location_search.dart';
+import 'package:Bex/presentation/views/app_view/components/location_search_result_picker.dart';
+import 'package:Bex/presentation/views/app_view/components/main_menu.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +19,7 @@ class Map extends HookWidget {
   final _controller = Completer<GoogleMapController>();
 
   final _kGooglePlex = const CameraPosition(
-    target: LatLng(-33.9249, 18.4241),
+    target: LatLng(-33.9249, 18.4241), //cape town
     zoom: zoom,
   );
 
@@ -31,16 +31,19 @@ class Map extends HookWidget {
     });
     final textController = useTextEditingController();
 
+    // final config = useProvider(configProvider).state;
     return BlocProvider(
       create: (_) => sl<LocationSearchCubit>(),
       child: Stack(
         children: [
           GoogleMap(
-            onTap: (argument) => _handleTap(
-              textFieldFocus,
-              focusNode,
-              argument,
-            ),
+            onTap: (argument) {
+              _handleTap(
+                textFieldFocus,
+                focusNode,
+                argument,
+              );
+            },
             onLongPress: (argument) => _handleLongPress(
               textFieldFocus,
               focusNode,

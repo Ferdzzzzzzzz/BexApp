@@ -1,6 +1,6 @@
-import 'package:bex_app/application/map/location_search/cubit.dart';
-import 'package:bex_app/core/failures/network_failures.dart';
-import 'package:bex_app/domain/map/i_map_facade.dart';
+import 'package:Bex/application/map/location_search/cubit.dart';
+import 'package:Bex/core/failures/network_failures.dart';
+import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import './location_search_state.dart';

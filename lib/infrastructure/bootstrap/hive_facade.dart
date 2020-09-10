@@ -1,5 +1,5 @@
-import 'package:bex_app/application/bootstrap/init_bootstrap.dart';
-import 'package:bex_app/domain/bootstrap/i_storage_facade.dart';
+import 'package:Bex/application/bootstrap/init_bootstrap.dart';
+import 'package:Bex/domain/bootstrap/i_storage_facade.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 

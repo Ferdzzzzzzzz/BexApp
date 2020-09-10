@@ -1,4 +1,4 @@
-import 'package:bex_app/application/bootstrap/init_bootstrap.dart';
+import 'package:Bex/application/bootstrap/init_bootstrap.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/init_storage_services.dart';

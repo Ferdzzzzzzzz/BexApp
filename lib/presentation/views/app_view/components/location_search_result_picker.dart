@@ -1,5 +1,5 @@
-import 'package:bex_app/application/map/location_search/cubit.dart';
-import 'package:bex_app/presentation/views/app_view/components/prediction_tile.dart';
+import 'package:Bex/application/map/location_search/cubit.dart';
+import 'package:Bex/presentation/views/app_view/components/prediction_tile.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

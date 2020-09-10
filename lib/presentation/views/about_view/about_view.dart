@@ -1,7 +1,7 @@
-import 'package:bex_app/core/constants.dart';
-import 'package:bex_app/gen/assets.gen.dart';
+import 'package:Bex/core/constants.dart';
+import 'package:Bex/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:bex_app/core/extensions/context_extensions.dart';
+import 'package:Bex/core/extensions/context_extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AboutView extends StatelessWidget {

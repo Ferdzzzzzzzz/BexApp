@@ -1,4 +1,4 @@
-import 'package:bex_app/core/failures/network_failures.dart';
+import 'package:Bex/core/failures/network_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_webservice/places.dart';

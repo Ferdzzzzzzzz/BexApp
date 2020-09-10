@@ -4,7 +4,7 @@
         "**/.dart_tool": true,
         "**/pubspec.lock": true,
         "**/bex_app.iml": true,
-        "**/.gitignore": true,
+        "**/.gitignore": false,
         "**/.metadata": true,
         "**/.flutter-plugins": true,
         "**/.flutter-plugins-dependencies": true,

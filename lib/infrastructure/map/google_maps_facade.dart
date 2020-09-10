@@ -1,5 +1,5 @@
-import 'package:bex_app/core/failures/network_failures.dart';
-import 'package:bex_app/domain/map/i_map_facade.dart';
+import 'package:Bex/core/failures/network_failures.dart';
+import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:dartz/dartz.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kt_dart/collection.dart';
