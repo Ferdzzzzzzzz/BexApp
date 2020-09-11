@@ -12,7 +12,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final config = await initializeConfig();
-
   configProvider = StateProvider<ConfigEntity>((_) => config);
 
   await Hive.initFlutter();
