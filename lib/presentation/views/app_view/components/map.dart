@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:Bex/application/map/location_search/cubit.dart';
 import 'package:Bex/core/hooks/focus_node_value_listener.dart';
+import 'package:Bex/core/utils/config.dart';
 import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search_result_picker.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../sl.dart';
 
@@ -31,7 +33,9 @@ class Map extends HookWidget {
     });
     final textController = useTextEditingController();
 
-    // final config = useProvider(configProvider).state;
+    final config = useProvider(configProvider).state;
+    print(config.gcpKey);
+
     return BlocProvider(
       create: (_) => sl<LocationSearchCubit>(),
       child: Stack(
