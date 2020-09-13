@@ -1,4 +1,4 @@
-import 'package:Bex/application/map/about/about_cubit.dart';
+import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/presentation/views/about_view/about_view.dart';
 import 'package:Bex/presentation/views/app_view/components/bottom_bar.dart';
 import 'package:Bex/presentation/views/app_view/components/map.dart';
@@ -9,7 +9,7 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = PageController(initialPage: 1);
-    return BlocConsumer<AboutCubit, CurrentPage>(
+    return BlocConsumer<BottomnavCubit, BottomNavState>(
       listener: (context, state) => _handlePageTransitionListener(
         context,
         state,
@@ -34,11 +34,11 @@ class AppView extends StatelessWidget {
 
   void _handlePageTransitionListener(
     BuildContext context,
-    CurrentPage state,
+    BottomNavState state,
     PageController controller,
   ) {
     controller.animateToPage(
-      state == CurrentPage.aboutPage ? 0 : 1,
+      state.currentPage == CurrentPage.aboutPage ? 0 : 1,
       duration: const Duration(milliseconds: 250),
       curve: Curves.ease,
     );

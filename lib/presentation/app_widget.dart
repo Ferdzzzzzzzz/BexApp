@@ -1,6 +1,5 @@
 import 'package:Bex/application/bootstrap/cubit.dart';
-import 'package:Bex/application/map/about/about_cubit.dart';
-import 'package:Bex/application/map/main_menu/main_menu_cubit.dart';
+import 'package:Bex/application/map/bottom_nav/bottom_nav_cubit.dart';
 import 'package:Bex/presentation/views/app_view/app_view.dart';
 import 'package:Bex/presentation/views/settings_select/settings_select_view.dart';
 import 'package:Bex/presentation/widgets/splash.dart';
@@ -15,19 +14,14 @@ class AppWidget extends StatelessWidget {
       create: (_) => sl<BootstrapCubit>()..checkAppSettings(),
     );
 
-    final mainMenuProvider = BlocProvider(
-      create: (_) => MainMenuCubit(),
-    );
-
-    final aboutPageProvider = BlocProvider(
-      create: (_) => AboutCubit(),
+    final bottomNavProvider = BlocProvider(
+      create: (_) => BottomnavCubit(),
     );
 
     return MultiBlocProvider(
       providers: [
         bootstrapProvider,
-        mainMenuProvider,
-        aboutPageProvider,
+        bottomNavProvider,
       ],
       child: BlocBuilder<BootstrapCubit, BootstrapState>(
         builder: (_, state) => state.when(

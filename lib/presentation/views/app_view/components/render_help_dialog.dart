@@ -1,18 +1,16 @@
 import 'package:Bex/application/bootstrap/cubit.dart';
+import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/gen/assets.gen.dart';
-import 'package:Bex/presentation/views/app_view/components/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:build_context/build_context.dart';
 
-void renderHelpDialog(
-  BuildContext context,
-  ValueNotifier<SelectedItem> selectedMenuItem,
-) {
+void renderHelpDialog(BuildContext context) {
   final maxH = context.mediaQuerySize.height;
   final maxW = context.mediaQuerySize.width;
   final bootstrapCubit = context.bloc<BootstrapCubit>();
+  final bottomNavCubit = context.bloc<BottomnavCubit>();
   final dialogText = (bootstrapCubit.state as HasSettings).hasTypeOne
       ? 'click on a location to read the story or choose a location to attach your own story to it'
       : 'click on a location to read the story attached to it';
@@ -22,7 +20,7 @@ void renderHelpDialog(
     barrierDismissible: true,
     builder: (dialogContext) => WillPopScope(
       onWillPop: () async {
-        selectedMenuItem.value = SelectedItem.map;
+        await bottomNavCubit.tapOnMap();
         return true;
       },
       child: Center(
@@ -111,7 +109,7 @@ void renderHelpDialog(
                       child: GestureDetector(
                         onTap: () {
                           Navigator.pop(dialogContext);
-                          selectedMenuItem.value = SelectedItem.map;
+                          bottomNavCubit.tapOnMap();
                         },
                         child: const Icon(Icons.close),
                       ),

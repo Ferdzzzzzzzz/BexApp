@@ -1,6 +1,5 @@
 import 'package:Bex/application/bootstrap/cubit.dart';
-import 'package:Bex/application/map/about/about_cubit.dart';
-import 'package:Bex/application/map/main_menu/main_menu_cubit.dart';
+import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/core/hooks/animation_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +26,7 @@ class MainMenu extends HookWidget {
       curve: Curves.easeOut,
     );
 
-    return BlocListener<MainMenuCubit, bool>(
+    return BlocListener<BottomnavCubit, BottomNavState>(
       listener: (context, state) => _handleMainMenuListener(
         context,
         state,
@@ -90,7 +89,7 @@ class MainMenu extends HookWidget {
 
   Widget _renderButtons(BuildContext context) {
     final bootstrapCubit = context.bloc<BootstrapCubit>();
-    final aboutCubit = context.bloc<AboutCubit>();
+    final bottomNavCubit = context.bloc<BottomnavCubit>();
 
     return Center(
       child: Column(
@@ -99,12 +98,15 @@ class MainMenu extends HookWidget {
           _renderMenuButton(
             'Home',
             context,
-            () => bootstrapCubit.switchAppSettings(),
+            () {
+              bootstrapCubit.switchAppSettings();
+              bottomNavCubit.tapOnMap();
+            },
           ),
           _renderMenuButton(
             'About',
             context,
-            () => aboutCubit.switchToAbout(),
+            () => bottomNavCubit.switchToAboutPage(),
           ),
         ],
       ),
@@ -133,10 +135,10 @@ class MainMenu extends HookWidget {
 
   void _handleMainMenuListener(
     BuildContext context,
-    bool state,
+    BottomNavState state,
     ValueNotifier<double> offset,
   ) {
-    if (state) {
+    if (state.selectedItem == SelectedItem.home) {
       offset.value = context.maxH * _offsetShowMultiplier;
     } else {
       offset.value = context.maxH * _offsetHiddenMultiplier;

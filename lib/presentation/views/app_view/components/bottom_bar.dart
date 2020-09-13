@@ -1,76 +1,68 @@
-import 'package:Bex/application/map/about/about_cubit.dart';
-import 'package:Bex/application/map/main_menu/main_menu_cubit.dart';
+import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/core/constants.dart';
 import 'package:Bex/gen/assets.gen.dart';
 import 'package:Bex/presentation/views/app_view/components/render_help_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum SelectedItem {
-  map,
-  home,
-  help,
-}
-
-class BottomBar extends HookWidget {
+class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final maxH = context.mediaQuerySize.height;
     final maxW = context.mediaQuerySize.width;
-    final selectedMenuItem = useState(SelectedItem.map);
     final iconHeight = maxH * 0.05;
 
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: bottomBarMaterialBoxShadow,
-      ),
-      child: BottomAppBar(
-        child: Container(
-          padding: EdgeInsets.only(
-            left: maxW * 0.08,
-            right: maxW * 0.08,
-            top: maxH * 0.005,
+    return BlocBuilder<BottomnavCubit, BottomNavState>(
+      builder: (context, state) {
+        return Container(
+          decoration: BoxDecoration(
+            boxShadow: bottomBarMaterialBoxShadow,
           ),
-          height: maxH * 0.08,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _renderHomeBtn(context, selectedMenuItem, iconHeight),
-              _renderMapBtn(context, selectedMenuItem, iconHeight),
-              _renderHelpBtn(
-                context,
-                selectedMenuItem,
-                iconHeight,
+          child: BottomAppBar(
+            child: Container(
+              padding: EdgeInsets.only(
+                left: maxW * 0.08,
+                right: maxW * 0.08,
+                top: maxH * 0.005,
               ),
-            ],
+              height: maxH * 0.08,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _renderHomeBtn(context, iconHeight, state),
+                  _renderMapBtn(context, iconHeight, state),
+                  _renderHelpBtn(context, iconHeight, state),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
   Widget _renderHomeBtn(
     BuildContext context,
-    ValueNotifier<SelectedItem> selectedMenuItem,
     double iconHeight,
+    BottomNavState state,
   ) {
-    final mainMenuCubit = context.bloc<MainMenuCubit>();
-    final homeSelected = selectedMenuItem.value == SelectedItem.home;
+    final bottomNavCubit = context.bloc<BottomnavCubit>();
+
     return SizedBox(
       height: iconHeight,
       child: GestureDetector(
         onTap: () {
-          if (homeSelected) {
-            selectedMenuItem.value = SelectedItem.map;
-            mainMenuCubit.hideMenu();
+          if (state.selectedItem == SelectedItem.home) {
+            bottomNavCubit.tapOnMap();
+            bottomNavCubit.hideMainMenu();
             return;
           }
-          mainMenuCubit.showMenu();
-          selectedMenuItem.value = SelectedItem.home;
+
+          bottomNavCubit.showMainMenu();
+          bottomNavCubit.tapOnHome();
         },
-        child: homeSelected
+        child: state.selectedItem == SelectedItem.home
             ? Assets.icons.navbarHome.image()
             : Assets.icons.navbarHomeOutline.image(),
       ),
@@ -79,23 +71,18 @@ class BottomBar extends HookWidget {
 
   Widget _renderMapBtn(
     BuildContext context,
-    ValueNotifier<SelectedItem> selectedMenuItem,
     double iconHeight,
+    BottomNavState state,
   ) {
-    final mainMenuCubit = context.bloc<MainMenuCubit>();
-    final aboutCubit = context.bloc<AboutCubit>();
-    final mapSelected = selectedMenuItem.value == SelectedItem.map;
+    final bottomNavCubit = context.bloc<BottomnavCubit>();
+    final mapSelected = state.selectedItem == SelectedItem.map;
     return SizedBox(
       height: iconHeight,
       child: GestureDetector(
         onTap: () {
-          if (mapSelected) {
-            selectedMenuItem.value = SelectedItem.map;
-            return;
-          }
-          mainMenuCubit.hideMenu();
-          aboutCubit.switchToMap();
-          selectedMenuItem.value = SelectedItem.map;
+          if (mapSelected) return;
+          bottomNavCubit.hideMainMenu();
+          bottomNavCubit.tapOnMap();
         },
         child: mapSelected
             ? Assets.icons.navbarLocation.image()
@@ -106,34 +93,31 @@ class BottomBar extends HookWidget {
 
   Widget _renderHelpBtn(
     BuildContext context,
-    ValueNotifier<SelectedItem> selectedMenuItem,
     double iconHeight,
+    BottomNavState state,
   ) {
-    final helpSelected = selectedMenuItem.value == SelectedItem.help;
+    final helpSelected = state.selectedItem == SelectedItem.help;
+    final bottomNavCubit = context.bloc<BottomnavCubit>();
+    final greyedOut = state.selectedItem == SelectedItem.home ||
+        state.currentPage == CurrentPage.aboutPage;
+    return SizedBox(
+      height: iconHeight * 1.2,
+      child: greyedOut
+          ? Assets.icons.navbarHelpGreyed.image()
+          : GestureDetector(
+              onTap: () {
+                if (helpSelected) {
+                  bottomNavCubit.tapOnMap();
+                  return;
+                }
+                bottomNavCubit.tapOnHelp();
 
-    return BlocBuilder<AboutCubit, CurrentPage>(
-      builder: (context, state) {
-        final greyedOut = state == CurrentPage.aboutPage ||
-            selectedMenuItem.value == SelectedItem.home;
-        return SizedBox(
-          height: iconHeight * 1.2,
-          child: greyedOut
-              ? Assets.icons.navbarHelpGreyed.image()
-              : GestureDetector(
-                  onTap: () {
-                    if (helpSelected) {
-                      selectedMenuItem.value = SelectedItem.map;
-                      return;
-                    }
-                    selectedMenuItem.value = SelectedItem.help;
-                    renderHelpDialog(context, selectedMenuItem);
-                  },
-                  child: helpSelected
-                      ? Assets.icons.navbarHelp.image()
-                      : Assets.icons.navbarHelpOutline.image(),
-                ),
-        );
-      },
+                renderHelpDialog(context);
+              },
+              child: helpSelected
+                  ? Assets.icons.navbarHelp.image()
+                  : Assets.icons.navbarHelpOutline.image(),
+            ),
     );
   }
 }
