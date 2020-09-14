@@ -5,55 +5,48 @@
 
 import 'package:flutter/widgets.dart';
 
-class $ConfigGen {
-  const $ConfigGen();
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
 
-  String get appConfig => 'config/app_config.json';
+  AssetGenImage get locationBlue =>
+      const AssetGenImage('assets/icons/location_blue.png');
+  AssetGenImage get locationOrange =>
+      const AssetGenImage('assets/icons/location_orange.png');
+  AssetGenImage get locationYellow =>
+      const AssetGenImage('assets/icons/location_yellow.png');
+  AssetGenImage get navbarHelp =>
+      const AssetGenImage('assets/icons/navbar_help.png');
+  AssetGenImage get navbarHelpGreyed =>
+      const AssetGenImage('assets/icons/navbar_help_greyed.png');
+  AssetGenImage get navbarHelpOutline =>
+      const AssetGenImage('assets/icons/navbar_help_outline.png');
+  AssetGenImage get navbarHome =>
+      const AssetGenImage('assets/icons/navbar_home.png');
+  AssetGenImage get navbarHomeOutline =>
+      const AssetGenImage('assets/icons/navbar_home_outline.png');
+  AssetGenImage get navbarLocation =>
+      const AssetGenImage('assets/icons/navbar_location.png');
+  AssetGenImage get navbarLocationOutline =>
+      const AssetGenImage('assets/icons/navbar_location_outline.png');
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  AssetGenImage get logo => const AssetGenImage('assets/images/LOGO.png');
-  AssetGenImage get splash => const AssetGenImage('assets/images/SPLASH.png');
-  AssetGenImage get bex => const AssetGenImage('assets/images/BEX.png');
-  AssetGenImage get background =>
-      const AssetGenImage('assets/images/BACKGROUND.png');
   AssetGenImage get aboutBackground =>
       const AssetGenImage('assets/images/ABOUT_BACKGROUND.png');
-}
-
-class $AssetsIconsGen {
-  const $AssetsIconsGen();
-
-  AssetGenImage get navbarLocationOutline =>
-      const AssetGenImage('assets/icons/navbar_location_outline.png');
-  AssetGenImage get navbarLocation =>
-      const AssetGenImage('assets/icons/navbar_location.png');
-  AssetGenImage get locationYellow =>
-      const AssetGenImage('assets/icons/location_yellow.png');
-  AssetGenImage get locationOrange =>
-      const AssetGenImage('assets/icons/location_orange.png');
-  AssetGenImage get locationBlue =>
-      const AssetGenImage('assets/icons/location_blue.png');
-  AssetGenImage get navbarHelpOutline =>
-      const AssetGenImage('assets/icons/navbar_help_outline.png');
-  AssetGenImage get navbarHelpGreyed =>
-      const AssetGenImage('assets/icons/navbar_help_greyed.png');
-  AssetGenImage get navbarHelp =>
-      const AssetGenImage('assets/icons/navbar_help.png');
-  AssetGenImage get navbarHome =>
-      const AssetGenImage('assets/icons/navbar_home.png');
-  AssetGenImage get navbarHomeOutline =>
-      const AssetGenImage('assets/icons/navbar_home_outline.png');
+  AssetGenImage get background =>
+      const AssetGenImage('assets/images/BACKGROUND.png');
+  AssetGenImage get bex => const AssetGenImage('assets/images/BEX.png');
+  AssetGenImage get logo => const AssetGenImage('assets/images/LOGO.png');
+  AssetGenImage get splash => const AssetGenImage('assets/images/SPLASH.png');
 }
 
 class Assets {
   Assets._();
 
-  static const $ConfigGen config = $ConfigGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage extends AssetImage {

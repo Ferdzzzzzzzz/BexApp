@@ -1,6 +1,9 @@
 # Secrets
 .env
 
+**/ios/Flutter/tmp.xcconfig
+
+
 # Miscellaneous
 *.class
 *.log

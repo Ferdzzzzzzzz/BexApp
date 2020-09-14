@@ -32,9 +32,10 @@ dev_dependencies:
   build_runner: 1.10.1
   lint: 1.2.0
   flutter_launcher_icons: 0.8.0
-  change_app_package_name: 0.1.2
   json_serializable: ^3.4.1
   flutter_native_splash: ^0.1.9
+  # flutter pub run change_app_package_name:main com.ferdzz.bex
+  change_app_package_name: 0.1.2
 
 # flutter pub run flutter_launcher_icons:main
 flutter_icons:
