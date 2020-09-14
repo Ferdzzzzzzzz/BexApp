@@ -6,6 +6,7 @@
     "configurations": [
         {
             "name": "bex",
+            "program": "lib/main.dart",
             "request": "launch",
             "type": "dart"
         }

@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/application/map/location_search/cubit.dart';
 import 'package:Bex/core/hooks/focus_node_value_listener.dart';
-import 'package:Bex/core/utils/config.dart';
 import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search_result_picker.dart';
@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../sl.dart';
 
@@ -33,9 +32,6 @@ class Map extends HookWidget {
     });
     final textController = useTextEditingController();
 
-    final config = useProvider(configProvider).state;
-    print(config.gcpKey);
-
     return BlocProvider(
       create: (_) => sl<LocationSearchCubit>(),
       child: Stack(
@@ -43,17 +39,20 @@ class Map extends HookWidget {
           GoogleMap(
             onTap: (argument) {
               _handleTap(
+                context,
                 textFieldFocus,
                 focusNode,
                 argument,
               );
             },
             onLongPress: (argument) => _handleLongPress(
+              context,
               textFieldFocus,
               focusNode,
               argument,
             ),
             onCameraMoveStarted: () => _handleCameraMoveStart(
+              context,
               textFieldFocus,
               focusNode,
             ),
@@ -88,7 +87,7 @@ class Map extends HookWidget {
     String placeId,
   ) async {
     textController.clear();
-    _unfocusTextField(textFieldFocus, focusNode);
+    _onMapTap(context, textFieldFocus, focusNode);
     final mapsService = sl<IMapFacade>();
     final eitherFailureOrPlaceDetails =
         await mapsService.getDetailsByPlaceId(placeId);
@@ -117,32 +116,41 @@ class Map extends HookWidget {
   }
 
   void _handleTap(
+    BuildContext context,
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
     LatLng latLng,
   ) {
-    _unfocusTextField(textFieldFocus, focusNode);
+    _onMapTap(context, textFieldFocus, focusNode);
   }
 
   void _handleCameraMoveStart(
+    BuildContext context,
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
   ) {
-    _unfocusTextField(textFieldFocus, focusNode);
+    _onMapTap(context, textFieldFocus, focusNode);
   }
 
   void _handleLongPress(
+    BuildContext context,
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
     LatLng latLng,
   ) {
-    _unfocusTextField(textFieldFocus, focusNode);
+    _onMapTap(context, textFieldFocus, focusNode);
   }
 
-  void _unfocusTextField(
+  void _onMapTap(
+    BuildContext context,
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
   ) {
+    final bottomNavCubit = context.bloc<BottomnavCubit>();
+    if (bottomNavCubit.state.showMainMenu) {
+      bottomNavCubit.hideMainMenu();
+      bottomNavCubit.tapOnMap();
+    }
     if (textFieldFocus.value) focusNode.unfocus();
   }
 }

@@ -11,17 +11,13 @@ class Splash extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: ColorName.bgColor,
-      body: Align(
-        child: Container(
-          width: maxW * 0.5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Assets.images.logo.image(fit: BoxFit.contain),
-              Assets.images.bex.image(fit: BoxFit.contain),
-              SizedBox(height: maxH * 0.1)
-            ],
+      body: Container(
+        width: maxW,
+        height: maxH,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Assets.images.splash.path),
+            fit: BoxFit.fill,
           ),
         ),
       ),

@@ -2,12 +2,9 @@ import 'package:Bex/presentation/app_widget.dart';
 import 'package:Bex/sl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:Bex/core/utils/config.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,20 +13,14 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  final config = await initializeConfig();
-  configProvider = StateProvider<ConfigEntity>((_) => config);
-
+  await FlutterConfig.loadEnvVariables();
   await Hive.initFlutter();
   await setupSl();
 
-  runApp(ProviderScope(child: MyApp(config)));
+  runApp(MyApp());
 }
 
-class MyApp extends HookWidget {
-  final ConfigEntity config;
-
-  const MyApp(this.config);
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

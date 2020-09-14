@@ -18,12 +18,12 @@ dependencies:
   google_fonts: 1.1.0
   dartz: 0.9.1
   flutter_hex_color: 1.0.2
-  google_maps_flutter: 0.5.31
+  google_maps_flutter: 0.5.32
   hive: ^1.4.4
   hive_flutter: 0.3.1
   google_maps_webservice: 0.0.18
   auto_size_text: ^2.1.0
-  hooks_riverpod: ^0.9.2
+  flutter_config: 1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -31,9 +31,10 @@ dev_dependencies:
   freezed: 0.11.6
   build_runner: 1.10.1
   lint: 1.2.0
-  flutter_launcher_icons: 0.7.5
+  flutter_launcher_icons: 0.8.0
   change_app_package_name: 0.1.2
   json_serializable: ^3.4.1
+  flutter_native_splash: ^0.1.9
 
 # flutter pub run flutter_launcher_icons:main
 flutter_icons:
@@ -43,16 +44,22 @@ flutter_icons:
   android: true
   ios: true
 
+# fluttergen
 flutter_gen:
   colors:
     inputs:
       - assets/color/colors.xml
  
+# flutter pub pub run flutter_native_splash:create
+flutter_native_splash:
+  image: assets/images/splash_logo.png
+  color: "8ec1c8"
+
 flutter:
   uses-material-design: true
   assets:
-    - config/
     - assets/images/LOGO.png
+    - assets/images/SPLASH.png
     - assets/images/BEX.png
     - assets/images/BACKGROUND.png
     - assets/images/ABOUT_BACKGROUND.png

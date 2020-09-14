@@ -15,6 +15,7 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   AssetGenImage get logo => const AssetGenImage('assets/images/LOGO.png');
+  AssetGenImage get splash => const AssetGenImage('assets/images/SPLASH.png');
   AssetGenImage get bex => const AssetGenImage('assets/images/BEX.png');
   AssetGenImage get background =>
       const AssetGenImage('assets/images/BACKGROUND.png');

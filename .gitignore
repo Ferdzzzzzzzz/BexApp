@@ -1,5 +1,5 @@
 # Secrets
-/config
+.env
 
 # Miscellaneous
 *.class

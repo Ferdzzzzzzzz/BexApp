@@ -1,7 +1,7 @@
 import 'package:Bex/core/failures/network_failures.dart';
+import 'package:Bex/core/utils/config.dart' as config;
 import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:dartz/dartz.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kt_dart/collection.dart';
 
 import "package:google_maps_webservice/places.dart";
@@ -12,7 +12,7 @@ class GoogleMapsFacade implements IMapFacade {
     String searchString,
   ) async {
     final places = GoogleMapsPlaces(
-      apiKey: "AIzaSyDhKLN-TZqzyeW_5yCtizJ8DcH8_Kceb2g",
+      apiKey: config.mapsKey,
     );
 
     try {
@@ -29,7 +29,7 @@ class GoogleMapsFacade implements IMapFacade {
     String placeId,
   ) async {
     final places = GoogleMapsPlaces(
-      apiKey: "AIzaSyDhKLN-TZqzyeW_5yCtizJ8DcH8_Kceb2g",
+      apiKey: config.mapsKey,
     );
 
     try {
