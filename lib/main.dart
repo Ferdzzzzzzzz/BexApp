@@ -1,5 +1,6 @@
 import 'package:Bex/presentation/app_widget.dart';
 import 'package:Bex/sl.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
+  await Firebase.initializeApp();
   await FlutterConfig.loadEnvVariables();
   await Hive.initFlutter();
   await setupSl();

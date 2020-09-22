@@ -24,6 +24,8 @@ dependencies:
   google_maps_webservice: 0.0.18
   auto_size_text: ^2.1.0
   flutter_config: 1.0.7
+  firebase_core: ^0.5.0
+  cloud_firestore: 0.14.0+2
 
 dev_dependencies:
   flutter_test:
@@ -50,7 +52,7 @@ flutter_gen:
   colors:
     inputs:
       - assets/color/colors.xml
- 
+
 # flutter pub pub run flutter_native_splash:create
 flutter_native_splash:
   image: assets/images/splash_logo.png
