@@ -24,7 +24,10 @@ Flutter/flutter_assets/
 Flutter/flutter_export_environment.sh
 ServiceDefinitions.json
 Runner/GeneratedPluginRegistrant.*
-GoogleService-Info.plist
+Runner/AppDelegate.swift
+
+**/ios/Flutter/tmp.xcconfig
+
 
 # Exceptions to above rules.
 !default.mode1v3

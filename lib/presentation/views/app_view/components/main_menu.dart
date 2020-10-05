@@ -46,7 +46,7 @@ class MainMenu extends HookWidget {
   }
 
   Widget _renderMenu(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: context.maxW * 0.42,
       height: context.maxH * 0.26,
       child: Stack(

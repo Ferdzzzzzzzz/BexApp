@@ -6,6 +6,14 @@ import 'cubit.dart';
 class BootstrapCubit extends Cubit<BootstrapState> {
   final IStorageFacade storageFacade;
 
+  HasSettings get getOrCrash {
+    try {
+      return state as HasSettings;
+    } catch (e) {
+      throw ErrorDescription('Invalid State: $e');
+    }
+  }
+
   BootstrapCubit(this.storageFacade) : super(const BootstrapState.initial());
 
   Future<void> checkAppSettings() async {

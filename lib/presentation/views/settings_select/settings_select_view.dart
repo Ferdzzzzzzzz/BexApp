@@ -25,7 +25,7 @@ class SettingsSelectView extends StatelessWidget {
     double maxW,
     double maxH,
   ) {
-    return Container(
+    return SizedBox(
       width: maxW,
       child: Column(
         children: [

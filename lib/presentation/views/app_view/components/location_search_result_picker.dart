@@ -21,7 +21,7 @@ class LocationSearchResultPicker extends StatelessWidget {
       child: BlocConsumer<LocationSearchCubit, LocationSearchState>(
         listener: _handleListener,
         builder: (stateContext, state) {
-          return Container(
+          return SizedBox(
             width: maxW * 0.9,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -71,7 +71,7 @@ class LocationSearchResultPicker extends StatelessWidget {
       );
 
   Widget _renderSearching(BuildContext context) => ListTile(
-        leading: Container(
+        leading: SizedBox(
           height: context.mediaQuerySize.height * 0.02,
           width: context.mediaQuerySize.height * 0.02,
           child: const CircularProgressIndicator(

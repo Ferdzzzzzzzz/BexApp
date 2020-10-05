@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:Bex/application/bootstrap/cubit.dart';
 import 'package:Bex/application/map/bottom_nav/cubit.dart';
 import 'package:Bex/application/map/location_search/cubit.dart';
 import 'package:Bex/core/hooks/focus_node_value_listener.dart';
@@ -6,6 +7,7 @@ import 'package:Bex/domain/map/i_map_facade.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search.dart';
 import 'package:Bex/presentation/views/app_view/components/location_search_result_picker.dart';
 import 'package:Bex/presentation/views/app_view/components/main_menu.dart';
+import 'package:Bex/presentation/widgets/dialogs/create_story_dialog.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +33,7 @@ class Map extends HookWidget {
       textFieldFocus.value = hasFocus;
     });
     final textController = useTextEditingController();
+    final bootStrapCubit = context.bloc<BootstrapCubit>();
 
     return BlocProvider(
       create: (_) => sl<LocationSearchCubit>(),
@@ -43,13 +46,13 @@ class Map extends HookWidget {
                 textFieldFocus,
                 focusNode,
                 argument,
+                bootStrapCubit.getOrCrash.hasTypeOne,
               );
             },
             onLongPress: (argument) => _handleLongPress(
               context,
               textFieldFocus,
               focusNode,
-              argument,
             ),
             onCameraMoveStarted: () => _handleCameraMoveStart(
               context,
@@ -120,8 +123,17 @@ class Map extends HookWidget {
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
     LatLng latLng,
+    bool canCreateStory,
   ) {
     _onMapTap(context, textFieldFocus, focusNode);
+
+    if (canCreateStory) {
+      showDialog<void>(
+        context: context,
+        barrierDismissible: true,
+        builder: (_) => CreateStoryDialog(latLng),
+      );
+    }
   }
 
   void _handleCameraMoveStart(
@@ -136,7 +148,6 @@ class Map extends HookWidget {
     BuildContext context,
     ValueNotifier<bool> textFieldFocus,
     FocusNode focusNode,
-    LatLng latLng,
   ) {
     _onMapTap(context, textFieldFocus, focusNode);
   }

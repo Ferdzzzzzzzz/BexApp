@@ -30,7 +30,7 @@ class LocationSearchBar extends HookWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Container(
+              child: SizedBox(
                 width: maxW * 0.8,
                 height: maxH * 0.05,
                 child: Center(

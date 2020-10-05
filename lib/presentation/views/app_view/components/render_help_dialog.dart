@@ -4,11 +4,11 @@ import 'package:Bex/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:build_context/build_context.dart';
+import 'package:Bex/core/extensions/context_extensions.dart';
 
 void renderHelpDialog(BuildContext context) {
-  final maxH = context.mediaQuerySize.height;
-  final maxW = context.mediaQuerySize.width;
+  final maxH = context.maxH;
+  final maxW = context.maxW;
   final bootstrapCubit = context.bloc<BootstrapCubit>();
   final bottomNavCubit = context.bloc<BottomnavCubit>();
   final dialogText = (bootstrapCubit.state as HasSettings).hasTypeOne
@@ -39,7 +39,7 @@ void renderHelpDialog(BuildContext context) {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: maxW * 0.5,
                         child: Text(
                           dialogText,
@@ -52,7 +52,7 @@ void renderHelpDialog(BuildContext context) {
                       SizedBox(
                         height: maxH * 0.05,
                       ),
-                      Container(
+                      SizedBox(
                         width: maxW * 0.65,
                         child: Row(
                           children: [
@@ -69,7 +69,7 @@ void renderHelpDialog(BuildContext context) {
                           ],
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: maxW * 0.65,
                         child: Row(
                           children: [

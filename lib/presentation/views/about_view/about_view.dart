@@ -20,7 +20,7 @@ class AboutView extends StatelessWidget {
 
   Widget _renderPage(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         height: context.maxH * 0.8,
         child: Column(
           children: [
@@ -45,7 +45,7 @@ class AboutView extends StatelessWidget {
   }
 
   Widget _renderText(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: context.maxW * 0.8,
       height: context.maxH * 0.6,
       child: Stack(
@@ -72,7 +72,7 @@ class AboutView extends StatelessWidget {
             ),
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               width: context.maxW * 0.6,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
