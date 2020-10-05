@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>387157699858-k2m2dv93mdemigvlvhq7ri13subo2i1u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.387157699858-k2m2dv93mdemigvlvhq7ri13subo2i1u</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>387157699858-rc3834onijecda7p4gki736tdbkv0uqk.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCT5SrMkguPNeiSw6nqOQKIDIKWzJUuN5k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>387157699858</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ferdzz.bex</string>
+	<key>PROJECT_ID</key>
+	<string>bexapp-2f63d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bexapp-2f63d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:387157699858:ios:9e0a8107571e4bebbb57cb</string>
+	<key>DATABASE_URL</key>
+	<string>https://bexapp-2f63d.firebaseio.com</string>
+</dict>
+</plist>
