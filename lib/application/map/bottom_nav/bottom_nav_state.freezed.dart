@@ -9,6 +9,7 @@ part of 'bottom_nav_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BottomNavStateTearOff {
   const _$BottomNavStateTearOff();
 
@@ -25,9 +26,11 @@ class _$BottomNavStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BottomNavState = _$BottomNavStateTearOff();
 
+/// @nodoc
 mixin _$BottomNavState {
   CurrentPage get currentPage;
   SelectedItem get selectedItem;
@@ -36,6 +39,7 @@ mixin _$BottomNavState {
   $BottomNavStateCopyWith<BottomNavState> get copyWith;
 }
 
+/// @nodoc
 abstract class $BottomNavStateCopyWith<$Res> {
   factory $BottomNavStateCopyWith(
           BottomNavState value, $Res Function(BottomNavState) then) =
@@ -44,6 +48,7 @@ abstract class $BottomNavStateCopyWith<$Res> {
       {CurrentPage currentPage, SelectedItem selectedItem, bool showMainMenu});
 }
 
+/// @nodoc
 class _$BottomNavStateCopyWithImpl<$Res>
     implements $BottomNavStateCopyWith<$Res> {
   _$BottomNavStateCopyWithImpl(this._value, this._then);
@@ -71,6 +76,7 @@ class _$BottomNavStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BottomNavStateCopyWith<$Res>
     implements $BottomNavStateCopyWith<$Res> {
   factory _$BottomNavStateCopyWith(
@@ -81,6 +87,7 @@ abstract class _$BottomNavStateCopyWith<$Res>
       {CurrentPage currentPage, SelectedItem selectedItem, bool showMainMenu});
 }
 
+/// @nodoc
 class __$BottomNavStateCopyWithImpl<$Res>
     extends _$BottomNavStateCopyWithImpl<$Res>
     implements _$BottomNavStateCopyWith<$Res> {
@@ -110,6 +117,7 @@ class __$BottomNavStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BottomNavState implements _BottomNavState {
   const _$_BottomNavState(
       {@required this.currentPage,

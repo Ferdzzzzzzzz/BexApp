@@ -1,1 +1,7 @@
-<color name="bgColor">#8EC1C8</color>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bgColor">#8EC1C8</color>
+    <color name="createStoryBgColor">#EFEFEF</color>
+    <color name="positiveOrange">#EEAF10</color>
+    <color name="negativeBlue">#8DC1C7</color>
+</resources>

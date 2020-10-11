@@ -9,6 +9,7 @@ part of 'bootstrap_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BootstrapStateTearOff {
   const _$BootstrapStateTearOff();
 
@@ -30,9 +31,11 @@ class _$BootstrapStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BootstrapState = _$BootstrapStateTearOff();
 
+/// @nodoc
 mixin _$BootstrapState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -62,12 +65,14 @@ mixin _$BootstrapState {
   });
 }
 
+/// @nodoc
 abstract class $BootstrapStateCopyWith<$Res> {
   factory $BootstrapStateCopyWith(
           BootstrapState value, $Res Function(BootstrapState) then) =
       _$BootstrapStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$BootstrapStateCopyWithImpl<$Res>
     implements $BootstrapStateCopyWith<$Res> {
   _$BootstrapStateCopyWithImpl(this._value, this._then);
@@ -77,11 +82,13 @@ class _$BootstrapStateCopyWithImpl<$Res>
   final $Res Function(BootstrapState) _then;
 }
 
+/// @nodoc
 abstract class $InitialCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$InitialCopyWithImpl<$Res> extends _$BootstrapStateCopyWithImpl<$Res>
     implements $InitialCopyWith<$Res> {
   _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
@@ -91,6 +98,7 @@ class _$InitialCopyWithImpl<$Res> extends _$BootstrapStateCopyWithImpl<$Res>
   Initial get _value => super._value as Initial;
 }
 
+/// @nodoc
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -168,6 +176,7 @@ abstract class Initial implements BootstrapState {
   const factory Initial() = _$Initial;
 }
 
+/// @nodoc
 abstract class $HasSettingsCopyWith<$Res> {
   factory $HasSettingsCopyWith(
           HasSettings value, $Res Function(HasSettings) then) =
@@ -175,6 +184,7 @@ abstract class $HasSettingsCopyWith<$Res> {
   $Res call({bool hasTypeOne});
 }
 
+/// @nodoc
 class _$HasSettingsCopyWithImpl<$Res> extends _$BootstrapStateCopyWithImpl<$Res>
     implements $HasSettingsCopyWith<$Res> {
   _$HasSettingsCopyWithImpl(
@@ -195,6 +205,7 @@ class _$HasSettingsCopyWithImpl<$Res> extends _$BootstrapStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$HasSettings implements HasSettings {
   const _$HasSettings({@required this.hasTypeOne}) : assert(hasTypeOne != null);
 
@@ -287,12 +298,14 @@ abstract class HasSettings implements BootstrapState {
   $HasSettingsCopyWith<HasSettings> get copyWith;
 }
 
+/// @nodoc
 abstract class $ChooseSettingsCopyWith<$Res> {
   factory $ChooseSettingsCopyWith(
           ChooseSettings value, $Res Function(ChooseSettings) then) =
       _$ChooseSettingsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ChooseSettingsCopyWithImpl<$Res>
     extends _$BootstrapStateCopyWithImpl<$Res>
     implements $ChooseSettingsCopyWith<$Res> {
@@ -304,6 +317,7 @@ class _$ChooseSettingsCopyWithImpl<$Res>
   ChooseSettings get _value => super._value as ChooseSettings;
 }
 
+/// @nodoc
 class _$ChooseSettings implements ChooseSettings {
   const _$ChooseSettings();
 

@@ -9,6 +9,7 @@ part of 'location_search_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LocationSearchStateTearOff {
   const _$LocationSearchStateTearOff();
 
@@ -25,9 +26,11 @@ class _$LocationSearchStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LocationSearchState = _$LocationSearchStateTearOff();
 
+/// @nodoc
 mixin _$LocationSearchState {
   Option<Either<NetworkFailure, KtList<Prediction>>> get locationList;
   bool get searching;
@@ -35,6 +38,7 @@ mixin _$LocationSearchState {
   $LocationSearchStateCopyWith<LocationSearchState> get copyWith;
 }
 
+/// @nodoc
 abstract class $LocationSearchStateCopyWith<$Res> {
   factory $LocationSearchStateCopyWith(
           LocationSearchState value, $Res Function(LocationSearchState) then) =
@@ -44,6 +48,7 @@ abstract class $LocationSearchStateCopyWith<$Res> {
       bool searching});
 }
 
+/// @nodoc
 class _$LocationSearchStateCopyWithImpl<$Res>
     implements $LocationSearchStateCopyWith<$Res> {
   _$LocationSearchStateCopyWithImpl(this._value, this._then);
@@ -66,6 +71,7 @@ class _$LocationSearchStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$LocationSearchStateCopyWith<$Res>
     implements $LocationSearchStateCopyWith<$Res> {
   factory _$LocationSearchStateCopyWith(_LocationSearchState value,
@@ -77,6 +83,7 @@ abstract class _$LocationSearchStateCopyWith<$Res>
       bool searching});
 }
 
+/// @nodoc
 class __$LocationSearchStateCopyWithImpl<$Res>
     extends _$LocationSearchStateCopyWithImpl<$Res>
     implements _$LocationSearchStateCopyWith<$Res> {
@@ -101,6 +108,7 @@ class __$LocationSearchStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LocationSearchState implements _LocationSearchState {
   const _$_LocationSearchState(
       {@required this.locationList, @required this.searching})
