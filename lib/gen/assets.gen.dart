@@ -40,6 +40,11 @@ class $AssetsImagesGen {
   AssetGenImage get bex => const AssetGenImage('assets/images/BEX.png');
   AssetGenImage get logo => const AssetGenImage('assets/images/LOGO.png');
   AssetGenImage get splash => const AssetGenImage('assets/images/SPLASH.png');
+  AssetGenImage get bg3 => const AssetGenImage('assets/images/bg3.png');
+  AssetGenImage get blueMarker =>
+      const AssetGenImage('assets/images/blue_marker.png');
+  AssetGenImage get yellowMarker =>
+      const AssetGenImage('assets/images/yellow_marker.png');
 }
 
 class Assets {

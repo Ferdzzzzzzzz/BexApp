@@ -19,12 +19,14 @@ class _$CreateStoryFormStateTearOff {
       @required String title,
       @required String story,
       @required bool canSubmit,
+      @required Option<Either<NetworkFailure, Unit>> optionSubmitResult,
       @required bool isSubmitting}) {
     return _CreateStoryFormState(
       optionStoryType: optionStoryType,
       title: title,
       story: story,
       canSubmit: canSubmit,
+      optionSubmitResult: optionSubmitResult,
       isSubmitting: isSubmitting,
     );
   }
@@ -40,6 +42,7 @@ mixin _$CreateStoryFormState {
   String get title;
   String get story;
   bool get canSubmit;
+  Option<Either<NetworkFailure, Unit>> get optionSubmitResult;
   bool get isSubmitting;
 
   $CreateStoryFormStateCopyWith<CreateStoryFormState> get copyWith;
@@ -55,6 +58,7 @@ abstract class $CreateStoryFormStateCopyWith<$Res> {
       String title,
       String story,
       bool canSubmit,
+      Option<Either<NetworkFailure, Unit>> optionSubmitResult,
       bool isSubmitting});
 }
 
@@ -73,6 +77,7 @@ class _$CreateStoryFormStateCopyWithImpl<$Res>
     Object title = freezed,
     Object story = freezed,
     Object canSubmit = freezed,
+    Object optionSubmitResult = freezed,
     Object isSubmitting = freezed,
   }) {
     return _then(_value.copyWith(
@@ -82,6 +87,9 @@ class _$CreateStoryFormStateCopyWithImpl<$Res>
       title: title == freezed ? _value.title : title as String,
       story: story == freezed ? _value.story : story as String,
       canSubmit: canSubmit == freezed ? _value.canSubmit : canSubmit as bool,
+      optionSubmitResult: optionSubmitResult == freezed
+          ? _value.optionSubmitResult
+          : optionSubmitResult as Option<Either<NetworkFailure, Unit>>,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
     ));
@@ -100,6 +108,7 @@ abstract class _$CreateStoryFormStateCopyWith<$Res>
       String title,
       String story,
       bool canSubmit,
+      Option<Either<NetworkFailure, Unit>> optionSubmitResult,
       bool isSubmitting});
 }
 
@@ -120,6 +129,7 @@ class __$CreateStoryFormStateCopyWithImpl<$Res>
     Object title = freezed,
     Object story = freezed,
     Object canSubmit = freezed,
+    Object optionSubmitResult = freezed,
     Object isSubmitting = freezed,
   }) {
     return _then(_CreateStoryFormState(
@@ -129,6 +139,9 @@ class __$CreateStoryFormStateCopyWithImpl<$Res>
       title: title == freezed ? _value.title : title as String,
       story: story == freezed ? _value.story : story as String,
       canSubmit: canSubmit == freezed ? _value.canSubmit : canSubmit as bool,
+      optionSubmitResult: optionSubmitResult == freezed
+          ? _value.optionSubmitResult
+          : optionSubmitResult as Option<Either<NetworkFailure, Unit>>,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
     ));
@@ -144,11 +157,13 @@ class _$_CreateStoryFormState
       @required this.title,
       @required this.story,
       @required this.canSubmit,
+      @required this.optionSubmitResult,
       @required this.isSubmitting})
       : assert(optionStoryType != null),
         assert(title != null),
         assert(story != null),
         assert(canSubmit != null),
+        assert(optionSubmitResult != null),
         assert(isSubmitting != null);
 
   @override
@@ -160,11 +175,13 @@ class _$_CreateStoryFormState
   @override
   final bool canSubmit;
   @override
+  final Option<Either<NetworkFailure, Unit>> optionSubmitResult;
+  @override
   final bool isSubmitting;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateStoryFormState(optionStoryType: $optionStoryType, title: $title, story: $story, canSubmit: $canSubmit, isSubmitting: $isSubmitting)';
+    return 'CreateStoryFormState(optionStoryType: $optionStoryType, title: $title, story: $story, canSubmit: $canSubmit, optionSubmitResult: $optionSubmitResult, isSubmitting: $isSubmitting)';
   }
 
   @override
@@ -176,6 +193,7 @@ class _$_CreateStoryFormState
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('story', story))
       ..add(DiagnosticsProperty('canSubmit', canSubmit))
+      ..add(DiagnosticsProperty('optionSubmitResult', optionSubmitResult))
       ..add(DiagnosticsProperty('isSubmitting', isSubmitting));
   }
 
@@ -193,6 +211,9 @@ class _$_CreateStoryFormState
             (identical(other.canSubmit, canSubmit) ||
                 const DeepCollectionEquality()
                     .equals(other.canSubmit, canSubmit)) &&
+            (identical(other.optionSubmitResult, optionSubmitResult) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionSubmitResult, optionSubmitResult)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)));
@@ -205,6 +226,7 @@ class _$_CreateStoryFormState
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(story) ^
       const DeepCollectionEquality().hash(canSubmit) ^
+      const DeepCollectionEquality().hash(optionSubmitResult) ^
       const DeepCollectionEquality().hash(isSubmitting);
 
   @override
@@ -219,6 +241,7 @@ abstract class _CreateStoryFormState implements CreateStoryFormState {
       @required String title,
       @required String story,
       @required bool canSubmit,
+      @required Option<Either<NetworkFailure, Unit>> optionSubmitResult,
       @required bool isSubmitting}) = _$_CreateStoryFormState;
 
   @override
@@ -229,6 +252,8 @@ abstract class _CreateStoryFormState implements CreateStoryFormState {
   String get story;
   @override
   bool get canSubmit;
+  @override
+  Option<Either<NetworkFailure, Unit>> get optionSubmitResult;
   @override
   bool get isSubmitting;
   @override

@@ -2,16 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'bottom_nav_state.freezed.dart';
 
-enum CurrentPage {
-  aboutPage,
-  mapPage,
-}
+enum CurrentPage { aboutPage, mapPage, storyPage }
 
-enum SelectedItem {
-  map,
-  home,
-  help,
-}
+enum SelectedItem { map, home, help, none }
 
 @freezed
 abstract class BottomNavState with _$BottomNavState {

@@ -25,6 +25,11 @@ class BottomnavCubit extends Cubit<BottomNavState> {
         currentPage: CurrentPage.aboutPage,
       ));
 
+  Future<void> switchToStoryPage() async => emit(state.copyWith(
+        currentPage: CurrentPage.storyPage,
+        selectedItem: SelectedItem.none,
+      ));
+
   Future<void> hideMainMenu() async => emit(state.copyWith(
         showMainMenu: false,
       ));

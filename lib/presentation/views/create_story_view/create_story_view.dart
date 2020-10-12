@@ -1,6 +1,8 @@
 import 'package:Bex/application/create_story_form/cubit.dart';
 import 'package:Bex/core/constants.dart';
+import 'package:Bex/domain/story/entities/story_entity.dart';
 import 'package:Bex/gen/colors.gen.dart';
+import 'package:Bex/sl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +18,7 @@ class CreateStoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CreateStoryFormCubit(),
+      create: (context) => sl<CreateStoryFormCubit>(),
       child: Scaffold(
         backgroundColor: ColorName.createStoryBgColor,
         body: Builder(
@@ -36,7 +38,18 @@ class CreateStoryView extends StatelessWidget {
   }
 
   Widget _renderStoryTypeBtns(BuildContext context) {
-    return BlocBuilder<CreateStoryFormCubit, CreateStoryFormState>(
+    return BlocConsumer<CreateStoryFormCubit, CreateStoryFormState>(
+      listener: (context, state) {
+        state.optionSubmitResult.fold(
+          () {},
+          (eitherFailureOrUnit) => eitherFailureOrUnit.fold(
+            (f) {
+              print("Submit Failed");
+            },
+            (_) => context.pop(),
+          ),
+        );
+      },
       builder: (context, state) {
         final formCubit = context.bloc<CreateStoryFormCubit>();
         return Row(
@@ -120,38 +133,42 @@ class CreateStoryView extends StatelessWidget {
     );
   }
 
-  Widget _renderAddCancelBtns(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: () => context.pop(),
-            child: Text(
-              'CANCEL',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-              ),
+  Widget _renderAddCancelBtns(BuildContext context) {
+    final formCubit = context.bloc<CreateStoryFormCubit>();
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        GestureDetector(
+          onTap: () => context.pop(),
+          child: Text(
+            'CANCEL',
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w600,
             ),
           ),
-          BlocBuilder<CreateStoryFormCubit, CreateStoryFormState>(
-            builder: (context, state) {
-              return GestureDetector(
-                onTap: () {
-                  if (state.canSubmit) {
-                    print('submit story');
-                  }
-                },
-                child: Text(
-                  'ADD',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w600,
-                    color: state.canSubmit ? Colors.black : Colors.grey,
-                  ),
+        ),
+        BlocBuilder<CreateStoryFormCubit, CreateStoryFormState>(
+          builder: (context, state) {
+            return GestureDetector(
+              onTap: () {
+                if (state.canSubmit) {
+                  formCubit.submitStory(latLng);
+                }
+              },
+              child: Text(
+                'ADD',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  color: state.canSubmit ? Colors.black : Colors.grey,
                 ),
-              );
-            },
-          ),
-        ],
-      );
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
 
   Widget _renderTitleText(BuildContext context) {
     return Text(
