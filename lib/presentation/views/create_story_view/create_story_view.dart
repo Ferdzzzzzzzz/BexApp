@@ -5,6 +5,7 @@ import 'package:Bex/gen/colors.gen.dart';
 import 'package:Bex/sl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:build_context/build_context.dart';
@@ -17,21 +18,34 @@ class CreateStoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<CreateStoryFormCubit>(),
-      child: Scaffold(
-        backgroundColor: ColorName.createStoryBgColor,
-        body: Builder(
-          builder: (blocContext) => Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _renderTitleText(blocContext),
-              _renderStoryTypeBtns(blocContext),
-              _renderTitleInput(blocContext),
-              _renderStoryInput(blocContext),
-              _renderAddCancelBtns(blocContext),
-            ],
-          ),
+    return KeyboardVisibilityProvider(
+      child: BlocProvider(
+        create: (context) => sl<CreateStoryFormCubit>(),
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: ColorName.createStoryBgColor,
+          body: Builder(builder: (blocContext) {
+            final keyboardOut =
+                KeyboardVisibilityProvider.isKeyboardVisible(blocContext);
+            return Center(
+              child: SingleChildScrollView(
+                child: SizedBox(
+                  height: keyboardOut ? context.maxH * 1.2 : context.maxH,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _renderTitleText(blocContext),
+                      _renderStoryTypeBtns(blocContext),
+                      _renderTitleInput(blocContext),
+                      _renderStoryInput(blocContext),
+                      _renderAddCancelBtns(blocContext),
+                      if (keyboardOut) SizedBox(height: context.maxH * 0.4),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
@@ -43,9 +57,7 @@ class CreateStoryView extends StatelessWidget {
         state.optionSubmitResult.fold(
           () {},
           (eitherFailureOrUnit) => eitherFailureOrUnit.fold(
-            (f) {
-              print("Submit Failed");
-            },
+            (f) {},
             (_) => context.pop(),
           ),
         );
@@ -139,8 +151,8 @@ class CreateStoryView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        GestureDetector(
-          onTap: () => context.pop(),
+        RawMaterialButton(
+          onPressed: () => context.pop(),
           child: Text(
             'CANCEL',
             style: GoogleFonts.poppins(
@@ -150,8 +162,8 @@ class CreateStoryView extends StatelessWidget {
         ),
         BlocBuilder<CreateStoryFormCubit, CreateStoryFormState>(
           builder: (context, state) {
-            return GestureDetector(
-              onTap: () {
+            return RawMaterialButton(
+              onPressed: () {
                 if (state.canSubmit) {
                   formCubit.submitStory(latLng);
                 }

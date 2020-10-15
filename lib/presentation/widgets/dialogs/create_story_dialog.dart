@@ -100,9 +100,8 @@ class CreateStoryDialog extends StatelessWidget {
   }
 
   Widget _renderButton(String title, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.translucent,
+    return RawMaterialButton(
+      onPressed: onTap,
       child: Text(
         title,
         style: GoogleFonts.poppins(

@@ -32,26 +32,27 @@ class StoryRepository implements IStoryRepository {
       await FirebaseFirestore.instance
           .collection('stories')
           .add(newStory.toJson());
-      //TODO seems to be stuck here?
 
       return right(unit);
     } catch (e) {
-      print("FIrebase failure?");
-      print(e);
       return left(NetworkFailure());
     }
   }
 
   @override
-  Future<Either<NetworkFailure, Unit>> createComment(
-    StoryEntity story,
-    String comment,
-  ) async {
+  Future<Either<NetworkFailure, Unit>> createComment({
+    @required StoryEntity story,
+    @required String comment,
+  }) async {
+    final updatedStory = story.copyWith(
+      comments: [...story.comments, comment],
+    );
+
     try {
       await FirebaseFirestore.instance
           .collection('stories')
           .doc(story.id)
-          .update(StoryDto.fromDomain(story).toJson());
+          .update(StoryDto.fromDomain(updatedStory).toJson());
 
       return right(unit);
     } catch (e) {

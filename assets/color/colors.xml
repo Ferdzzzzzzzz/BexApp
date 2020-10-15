@@ -4,4 +4,5 @@
     <color name="createStoryBgColor">#EFEFEF</color>
     <color name="positiveOrange">#EEAF10</color>
     <color name="negativeBlue">#8DC1C7</color>
+    <color name="superLightGrey">#EEEEEF</color>
 </resources>

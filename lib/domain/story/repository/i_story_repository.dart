@@ -15,8 +15,8 @@ abstract class IStoryRepository {
     @required LatLng latLng,
   });
 
-  Future<Either<NetworkFailure, Unit>> createComment(
-    StoryEntity story,
-    String comment,
-  );
+  Future<Either<NetworkFailure, Unit>> createComment({
+    @required StoryEntity story,
+    @required String comment,
+  });
 }

@@ -8,6 +8,8 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  AssetGenImage get commentIcon =>
+      const AssetGenImage('assets/icons/comment_icon.png');
   AssetGenImage get locationBlue =>
       const AssetGenImage('assets/icons/location_blue.png');
   AssetGenImage get locationOrange =>

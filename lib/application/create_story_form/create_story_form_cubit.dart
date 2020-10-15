@@ -39,7 +39,7 @@ class CreateStoryFormCubit extends Cubit<CreateStoryFormState> {
       isSubmitting: true,
     ));
 
-    final eitherFailureOrUnit = await story.submit(
+    final eitherFailureOrUnit = await story.submitStory(
       title: state.title,
       story: state.story,
       type: state.optionStoryType.fold(

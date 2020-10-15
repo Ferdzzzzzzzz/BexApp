@@ -13,4 +13,5 @@ class ColorName {
   static const Color createStoryBgColor = Color(0xFFEFEFEF);
   static const Color negativeBlue = Color(0xFF8DC1C7);
   static const Color positiveOrange = Color(0xFFEEAF10);
+  static const Color superLightGrey = Color(0xFFEEEEEF);
 }

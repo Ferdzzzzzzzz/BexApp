@@ -38,12 +38,12 @@ class MarkersCubit extends Cubit<MarkersState> {
 
   Future<void> initialiseMarkers() async {
     final positiveIcon = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(size: Size(10, 10)),
+      const ImageConfiguration(),
       Assets.images.yellowMarker.path,
     );
 
     final negativeIcon = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(size: Size(10, 10)),
+      const ImageConfiguration(),
       Assets.images.blueMarker.path,
     );
 

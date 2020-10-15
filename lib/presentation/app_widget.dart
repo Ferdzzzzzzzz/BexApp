@@ -1,5 +1,6 @@
 import 'package:Bex/application/bootstrap/cubit.dart';
 import 'package:Bex/application/map/bottom_nav/bottom_nav_cubit.dart';
+import 'package:Bex/application/map_location_cubit/map_location_cubit.dart';
 import 'package:Bex/presentation/views/app_view/app_view.dart';
 import 'package:Bex/presentation/views/settings_select/settings_select_view.dart';
 import 'package:Bex/presentation/widgets/splash.dart';
@@ -18,10 +19,15 @@ class AppWidget extends StatelessWidget {
       create: (_) => BottomnavCubit(),
     );
 
+    final mapLocationProvider = BlocProvider(
+      create: (_) => MapLocationCubit(),
+    );
+
     return MultiBlocProvider(
       providers: [
         bootstrapProvider,
         bottomNavProvider,
+        mapLocationProvider,
       ],
       child: BlocBuilder<BootstrapCubit, BootstrapState>(
         builder: (_, state) => state.when(

@@ -10,7 +10,7 @@ class Story {
 
   Story(this.repository);
 
-  Future<Either<NetworkFailure, Unit>> submit({
+  Future<Either<NetworkFailure, Unit>> submitStory({
     @required String title,
     @required String story,
     @required StoryType type,
@@ -21,6 +21,21 @@ class Story {
       story: story,
       type: type,
       latLng: latLng,
+    );
+
+    return eitherFailureOrUnit.fold(
+      (f) => left(f),
+      (unit) => right(unit),
+    );
+  }
+
+  Future<Either<NetworkFailure, Unit>> submitComment({
+    @required StoryEntity story,
+    @required String comment,
+  }) async {
+    final eitherFailureOrUnit = await repository.createComment(
+      story: story,
+      comment: comment,
     );
 
     return eitherFailureOrUnit.fold(
