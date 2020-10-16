@@ -87,6 +87,7 @@ class CommentView extends HookWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomPadding: true,
       backgroundColor: ColorName.superLightGrey,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -195,9 +196,9 @@ class CommentView extends HookWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: keyboardOut ? context.maxH * 0.45 : 0,
-                    ),
+                    // SizedBox(
+                    //   height: keyboardOut ? context.maxH * 0.45 : 0,
+                    // ),
                   ],
                 ),
               ),
